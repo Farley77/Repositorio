@@ -22,7 +22,8 @@ async function loadCharacters(url) {
   try {
     const response = await fetch(url);
     const responseJson = await response.json();
-      responseJson.results.forEach((character) => {
+
+    responseJson.results.forEach((character) => {
       const card = document.createElement("div");
       card.className = "cards"
       const characterNameBG = document.createElement("div")
@@ -36,7 +37,6 @@ async function loadCharacters(url) {
         const modal = document.getElementById("modal")
         modal.style.visibility = "visible"
         const modalContent = document.getElementById("modal-content")
-        modalContent.innerHTML = ''
 
         const characterImage = document.createElement("div")
         characterImage.style.backgroundImage = `url('https://starwars-visualguide.com/assets/img/characters/${character.url.replace(/\D/g, "")}.jpg')`
