@@ -84,6 +84,8 @@ h2 {
 .cards {
   width: 230px;
   height: 470px;
+  background-image: url('./assets/Captura\ de\ tela\ 2024-09-20\ 215527.png');
+  background-size: cover;
   background-position: 50% 50%;
   background-size: cover;
   display: flex;
