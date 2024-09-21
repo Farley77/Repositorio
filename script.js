@@ -25,6 +25,7 @@ async function loadCharacters(url) {
 
     responseJson.results.forEach((character) => {
       const card = document.createElement("div");
+      card.style.backgroundImage = `url('https://starwars-visualguide.com/assets/img/characters/${character.url.replace(/\D/g, "")}.jpg')`
       card.className = "cards"
       const characterNameBG = document.createElement("div")
       characterNameBG.className = "character-name-bg"
@@ -36,9 +37,9 @@ async function loadCharacters(url) {
       card.onclick = () => {
         const modal = document.getElementById("modal")
         modal.style.visibility = "visible"
-        const modalContent = document.getElementById("modal-content");
-        modalContent.innerHTML = "";
-        
+        const modalContent = document.getElementById("modal-content")
+        modalContent.innerHTML = ''
+
         const characterImage = document.createElement("div")
         characterImage.style.backgroundImage = `url('https://starwars-visualguide.com/assets/img/characters/${character.url.replace(/\D/g, "")}.jpg')`
         characterImage.className = "character-image"
