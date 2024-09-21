@@ -9,7 +9,7 @@
 }
 
 body {
-  background-image: url('./assets/Captura\ de\ tela\ 2024-09-20\ 215527.png');
+  background-image: url('./assets/universo-bg.jpg');
   background-size: cover;
 }
 
@@ -85,7 +85,6 @@ h2 {
   width: 230px;
   height: 470px;
   background-position: 50% 50%;
-  background-image: url('./assets/Captura\ de\ tela\ 2024-09-20\ 215527.png');
   background-size: cover;
   display: flex;
   align-items: end;
