@@ -36,7 +36,7 @@ async function loadCharacters(url) {
       card.onclick = () => {
         const modal = document.getElementById("modal")
         modal.style.visibility = "visible"
-        const modalContent = document.getElementById("modal-content")
+        const modalContent = document.getElementById("modal-content");
         modalContent.innerHTML = "";
         
         const characterImage = document.createElement("div")
