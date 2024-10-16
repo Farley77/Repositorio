@@ -330,3 +330,11 @@ header {
   }
   
 }
+
+@media(max-width:391px){
+  .cards{
+    width: 120px;
+    height: 200px;
+  }
+
+}
