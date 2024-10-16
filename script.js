@@ -1,165 +1,165 @@
-let currentPageUrl = 'https://swapi.dev/api/people/';
+let currentPageUrl = 'https://swapi.dev/api/people/'
 
 window.onload = async () => {
-  try {
-    await loadCharacters(currentPageUrl);
-  } catch (error) {
-    console.log(error);
-    alert('Erro ao carregar cards');
-  }
+    try {
+        await loadCharacters(currentPageUrl);
+    } catch (error) {
+        alert('Erro ao carregar cards');
+    }
 
-  const nextButton = document.getElementById('next-button');
-  nextButton.addEventListener('click', loadNextPage);
+    const nextButton = document.getElementById('next-button')
+    const backButton = document.getElementById('back-button')
 
-  const backButton = document.getElementById('back-button');
-  backButton.addEventListener('click', loadPreviousPage);
+    nextButton.addEventListener('click', loadNextPage)
+    backButton.addEventListener('click', loadPreviousPage)
 };
 
 async function loadCharacters(url) {
-  const mainContent = document.getElementById('main-content');
-  mainContent.innerHTML = ''; // Limpa os resultados anteriores
+    const mainContent = document.getElementById('main-content')
+    mainContent.innerHTML = ''; //Limpa os resultados anteriores
 
-  try {
-    const response = await fetch(url);
-    const responseJson = await response.json();
+    try {
 
-    responseJson.results.forEach((character) => {
-      const card = document.createElement("div");
-      card.style.backgroundImage = `url('https://starwars-visualguide.com/assets/img/characters/${character.url.replace(/\D/g, "")}.jpg')`
-      card.className = "cards"
-      const characterNameBG = document.createElement("div")
-      characterNameBG.className = "character-name-bg"
-      const characterName = document.createElement("span")
-      characterName.className = "character-name"
-      characterName.innerText = `${character.name}`
-      characterNameBG.appendChild(characterName)
-      card.appendChild(characterNameBG)
-      card.onclick = () => {
-        const modal = document.getElementById("modal")
-        modal.style.visibility = "visible"
-        const modalContent = document.getElementById("modal-content")
-        modalContent.innerHTML = ''
+        const response = await fetch(url);
+        const responseJson = await response.json();
 
-        const characterImage = document.createElement("div")
-        characterImage.style.backgroundImage = `url('https://starwars-visualguide.com/assets/img/characters/${character.url.replace(/\D/g, "")}.jpg')`
-        characterImage.className = "character-image"
+        responseJson.results.forEach((character) => {
+            const card = document.createElement("div")
+            card.style.backgroundImage = `url('https://starwars-visualguide.com/assets/img/characters/${character.url.replace(/\D/g, "")}.jpg')`
+            card.className = "cards"
 
-        const name = document.createElement("span")
-        name.className = "character-details"
-        name.innerText = `Nome: ${character.name}`
+            const characterNameBg = document.createElement("div")
+            characterNameBg.className = "character-name-bg"
 
-        const characterHeight = document.createElement("span")
-        characterHeight.className = "character-details"
-        characterHeight.innerText = `Altura: ${convertHeight(character.height)}`
+            const characterName = document.createElement("spam")
+            characterName.className = "character-name"
+            characterName.innerText = `${character.name}`
 
-        const mass = document.createElement("span")
-        mass.className = "character-details"
-        mass.innerText = `Peso: ${convertMass(character.mass)}`
+            characterNameBg.appendChild(characterName)
+            card.appendChild(characterNameBg)
 
-        const eyeColor = document.createElement("span")
-        eyeColor.className = "character-details"
-        eyeColor.innerText = `Cor dos olhos: ${convertEyeColor(character.eye_color)}`
+            card.onclick = () => {
+                const modal = document.getElementById("modal")
+                modal.style.visibility = "visible"
 
-        const birthYear = document.createElement("span")
-        birthYear.className = "character-details"
-        birthYear.innerText = `Nascimento: ${convertBirthYear(character.birth_year)}`
+                const modalContent = document.getElementById("modal-content")
+                modalContent.innerHTML = ''
 
-        modalContent.appendChild(characterImage)
-        modalContent.appendChild(name)
-        modalContent.appendChild(characterHeight)
-        modalContent.appendChild(mass)
-        modalContent.appendChild(eyeColor)
-        modalContent.appendChild(birthYear)
-      }
-      const mainContent = document.getElementById('main-content');
-      mainContent.appendChild(card);
+                const characterImage = document.createElement("div")
+                characterImage.style.backgroundImage = `url('https://starwars-visualguide.com/assets/img/characters/${character.url.replace(/\D/g, "")}.jpg')`;
+                characterImage.className = "character-image"
 
-    });
+                const name = document.createElement("span")
+                name.className = "character-details"
+                name.innerText = `Nome: ${character.name}`
 
-    // Habilita ou desabilita os botões de acordo com a presença de URLs de próxima e página anterior
-    const nextButton = document.getElementById('next-button');
-    const backButton = document.getElementById('back-button');
-    nextButton.disabled = !responseJson.next;
-    backButton.disabled = !responseJson.previous;
+                const height = document.createElement("span")
+                height.className = "character-details"
+                height.innerText = `Altura: ${convertHeight(character.height)}`
 
-    backButton.style.visibility = responseJson.previous ? "visible" : "hidden";
+                const gender = document.createElement("span")
+                gender.className = "character-details"
+                gender.innerText = `Gênero: ${convertGender(character.gender)}`
 
-    currentPageUrl = url;
-  } catch (error) {
-    throw new Error('Erro ao carregar personagens');
-  }
-}
+                const birth_year = document.createElement("span")
+                birth_year.className = "character-details"
+                birth_year.innerText = `Nascimento: ${convertBirthYear(character.birth_year)}`         
 
-function hideModal() {
-  const modal = document.getElementById("modal")
-  modal.style.visibility = "hidden"
-}
+                const mass = document.createElement("span")
+                mass.className = "character-details"
+                mass.innerText = `Peso: ${convertMass(character.mass)}`
 
-function convertEyeColor(eyeColor) {
-  const cores = {
-    blue: "azul",
-    brown: "castanho",
-    green: "verde",
-    yellow: "amarelo",
-    black: "preto",
-    pink: "rosa",
-    red: "vermelho",
-    orange: "laranja",
-    hazel: "avela",
-    unknown: "desconhecida"
-  };
+                modalContent.appendChild(characterImage)
+                modalContent.appendChild(name)
+                modalContent.appendChild(height)
+                modalContent.appendChild(mass)
+                modalContent.appendChild(birth_year)
+                modalContent.appendChild(gender)
+            }
 
-  return cores[eyeColor.toLowerCase()] || eyeColor;
-}
+            mainContent.appendChild(card)
+        });
 
-function convertHeight(height) {
-  if (height === "unknown") {
-    return "desconhecida";
-  }
-  
-  return (height / 100).toFixed(2);
-}
+        const nextButton = document.getElementById("next-button")
+        const backButton = document.getElementById("back-button")
 
-function convertMass(mass) {
-  if (mass === "unknown") {
-    return "desconhecido";
-  }
-  
-  return `${mass} kg`;
-}
+        nextButton.disabled = !responseJson.next
+        backButton.disabled = !responseJson.previous
 
-function convertBirthYear(birthYear) {
-  if (birthYear === "unknown") {
-    return "desconhecido";
-  }
-  
-  return birthYear;
+        backButton.style.visibility = responseJson.previous? "visible" : "hidden"
+
+        currentPageUrl = url
+
+    } catch(error) {
+        console.log(error)
+        alert('Erro ao carregar personagens')
+    }
 }
 
 async function loadNextPage() {
-  if (!currentPageUrl) return;
+    if(!currentPageUrl) return;
 
-  try {
-    const response = await fetch(currentPageUrl);
-    const responseJson = await response.json();
+    try {
+        const response = await fetch(currentPageUrl)
+        const responseJson = await response.json()
+        await loadCharacters(responseJson.next)
 
-    await loadCharacters(responseJson.next);
-  } catch (error) {
-    console.log(error);
-    alert('Erro ao carregar a próxima página');
-  }
+    } catch (error) {
+        console.log(error)
+        alert('erro ao carregar próxima página')
+    }
 }
 
 async function loadPreviousPage() {
-  if (!currentPageUrl) return;
+    if(!currentPageUrl) return;
 
-  try {
-    const response = await fetch(currentPageUrl);
-    const responseJson = await response.json();
+    try {
+        const response = await fetch(currentPageUrl)
+        const responseJson = await response.json()
 
-    await loadCharacters(responseJson.previous);
-  } catch (error) {
-    console.log(error);
-    alert('Erro ao carregar a página anterior');
-  }
+        await loadCharacters(responseJson.previous)
+        
+    } catch (error) {
+        console.log(error)
+        alert('erro ao carregar a página anterior')
+    }
+}
+
+function hideModal() {
+    const modal = document.getElementById("modal")
+    modal.style.visibility = "hidden"
+}
+
+function convertGender(gender) {
+    const generos = {
+        male: "masculino",
+        female: "feminino",
+        'n/a': "desconhecido"
+    };
+
+    return generos[gender.toLowerCase()] || gender;
+}
+
+function convertHeight(height) {
+    if (height === "unknown") {
+        return "desconhecida"
+    }
+
+return (height / 100).toFixed(2) + ' m';
+}
+
+function convertMass(mass) {
+    if (mass === "unknown") {
+        return "desconhecido"
+    }
+
+    return `${mass} kg`;
+}
+
+function convertBirthYear(birth_year) {
+    if (birth_year === "unknown") {
+        return "desconhecido"
+    }
+
+    return `${birth_year}`;
 }
