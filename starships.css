@@ -331,6 +331,13 @@ header {
   
 }
 
+@media(max-width:430px){
+
+  .cards{
+    width: 134px;
+    height: 230px;
+  }
+
 @media(max-width:391px){
   .cards{
     width: 120px;
