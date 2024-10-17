@@ -297,13 +297,13 @@ footer {
     height: 350px;
   }
 
-  .starships-image{
+  .character-image{
     width: 100px;
     height: 100px;
     border-radius: 50%;
   }
 
-  .starships-details{
+  .character-details{
     font-size: 12px;
   }
 
@@ -344,7 +344,7 @@ h2{
   justify-content: center;
 }
 
-.starships-name{
+.character-name{
   font-size: 9px;
 }
 
@@ -353,13 +353,13 @@ h2{
   height: 350px;
 }
 
-.starships-image{
+.character-image{
   width: 100px;
   height: 100px;
   border-radius: 50%;
 }
 
-.starships-details{
+.character-details{
   font-size: 12px;
 }
 
