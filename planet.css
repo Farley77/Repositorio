@@ -205,10 +205,29 @@ header {
     color: gold;
   }
 
+  @media(max-width:1000px){
+    .planet-image{
+      width: 120px;
+      height: 120px;
+      border-radius: 100%;
+    }
+
+    .planet-details{
+      font-size: 12px;
+    }
+
+      .modal-content{
+        width: 30vw;
+        height: 50vh;
+      }
+
+  }
+
   @media(max-width:768px){
 
     .social-media{
       width: 80px;
+      margin-right: 3px;
       
     }
 
@@ -276,18 +295,56 @@ header {
       row-gap: 10px;
       padding: 0px;
     }
+
+    .planet-image{
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+
+    .planet-details{
+      font-size: 12px;
+    }
     
 }
 
 @media(max-width:480px){
-  
+
+  .social-media{
+    display: none;
+  }
+
+  .social-media2{
+    display: flex;
+    width: 120px;
+    height:30px;
+  }
+ 
+  .start{
+    width: 300px;
+    font-size: 13px ;
+    margin-right: 60px;
+    font-display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
  
   .main-content{
     column-gap: 5px;
     row-gap: 5px;
     padding: 0px;
   }
+
+  .planet-image{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
   
+  .planet-details{
+    font-size: 12px;
+  }
+
   .cards{
     width: 114px;
     height: 200px;
@@ -297,8 +354,6 @@ header {
     margin-left: 5px;
     margin-right: 0px;
     font-size: 12px;
-    border: solid gold 2px;
-    border-radius: 3px;
   }  
   
   h2{
@@ -332,12 +387,16 @@ header {
   }
 
   i{
-    font-size: 12px;
+    font-size: 20px;
   }
  
   
   h2{
     font-size: 13px;
+  }
+
+  .footer-logo{
+    font-size: 18px;
   }
 }
   
