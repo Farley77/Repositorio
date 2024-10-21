@@ -66,10 +66,12 @@ header {
 
 .mesclado{
     font-family: 'Star Wars';
+    transition: .5s;
 }
 
 .mesclado:hover{
-    color:gold;
+  color: gold;
+  transform: scale(1.09);
 }
 
 
