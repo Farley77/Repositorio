@@ -24,9 +24,9 @@ async function loadCharacters(url) {
         const responseJson = await response.json();
 
         responseJson.results.forEach((character) => {
-            const card = document.createElement("div")
-            card.style.backgroundImage = `url('https://starwars-visualguide.com/assets/img/characters/${character.url.replace(/\D/g, "")}.jpg')`
-            card.className = "cards"
+            const cards = document.createElement("div")
+            cards.style.backgroundImage = `url('https://starwars-visualguide.com/assets/img/characters/${character.url.replace(/\D/g, "")}.jpg')`
+            cards.className = "cards"
 
             const characterNameBg = document.createElement("div")
             characterNameBg.className = "character-name-bg"
@@ -36,9 +36,9 @@ async function loadCharacters(url) {
             characterName.innerText = `${character.name}`
 
             characterNameBg.appendChild(characterName)
-            card.appendChild(characterNameBg)
+            cards.appendChild(characterNameBg)
 
-            card.onclick = () => {
+            cards.onclick = () => {
                 const modal = document.getElementById("modal")
                 modal.style.visibility = "visible"
 
@@ -77,7 +77,7 @@ async function loadCharacters(url) {
                 modalContent.appendChild(gender)
             }
 
-            mainContent.appendChild(card)
+            mainContent.appendChild(cards)
         });
 
         const nextButton = document.getElementById("next-button")
