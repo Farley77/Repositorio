@@ -68,6 +68,10 @@ header {
     font-family: 'Star Wars';
 }
 
+.mesclado:hover{
+    color:gold;
+}
+
 
 .main-container {
   display: flex;
